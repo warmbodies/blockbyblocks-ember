@@ -4,3 +4,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inconsolata';
 }
+
+.parent-hover-margin-left .child-hover-margin-left {
+  transition: margin 0.2s ease-in-out;
+}
+
+.parent-hover-margin-left:hover .child-hover-margin-left {
+  margin-left: 0.5em;
+}
