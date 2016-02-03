@@ -1,0 +1,26 @@
+<div class="container flex flex-center hundy-vh">
+  <div class="form flex-grow center">
+    <h1 class="mb2">
+      <span class="underline-blue">Signup</span>
+      &nbsp;&nbsp;&nbsp;
+      {{#link-to "login"}}Login{{/link-to}}
+    </h1>
+    <div class="mt2">
+      {{bbb-input value="username" model=model}}
+    </div>
+    <div class="mt2">
+      {{bbb-input value="email" model=model}}
+    </div>
+    <div class="mt2">
+      {{bbb-password value="password" model=model}}
+    </div>
+    <div class="mt2">
+      {{bbb-password value="passwordConfirmation" model=model}}
+    </div>
+    <div class="mt4">
+      <a href="#" class="btn btn-primary" {{action "signup"}}>
+        Signup
+      </a>
+    </div>
+  </div>
+</div>
