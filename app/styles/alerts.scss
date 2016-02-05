@@ -1,12 +1,21 @@
 .alert {
   line-height: 1.5;
   text-align: center;
+  color: $white;
 }
 
-.alert.success {
+.alert.alert-success {
+  background: $green;
 }
 
 .alert.alert-danger {
   background: $red;
-  color: $white;
+}
+
+.alert.alert-warning {
+  background: $yellow;
+}
+
+.alert.alert-info {
+  background: $blue;
 }

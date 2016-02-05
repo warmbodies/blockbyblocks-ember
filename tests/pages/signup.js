@@ -12,7 +12,7 @@ export default PageObject.create({
   username: fillable('[data-test-id=input__username]'),
   password: fillable('[data-test-id=input__password]'),
   passwordConfirmation: fillable('[data-test-id=input__passwordConfirmation]'),
-  submit: fillable('[data-test-id=signupButton]')
+  submit: clickable('[data-test-id=signupButton]')
 
 
 });
