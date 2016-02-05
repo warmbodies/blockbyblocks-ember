@@ -1,19 +1,6 @@
-/* apply a natural box layout model to all elements, but allowing components to change */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-$blue: #0074d9 !default;
-
-body {
-  font-family: 'Inconsolata';
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inconsolata';
-}
+@import '../../../node_modules/basscss-sass/_colors.scss';
+@import 'alerts';
+@import 'resets';
 
 .parent-hover-margin-left .child-hover-margin-left {
   transition: margin 0.2s ease-in-out;

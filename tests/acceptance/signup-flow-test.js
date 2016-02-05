@@ -2,6 +2,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'blockbyblocks-ember/tests/helpers/module-for-acceptance';
 
 import signupPage from '../pages/signup';
+import flashPage from '../pages/flash';
 // import userFactory from '../factories/user';
 import FactoryGuy, { make, build } from 'ember-data-factory-guy';
 
@@ -27,7 +28,17 @@ test('creating new signup', function(assert) {
   signupPage.submit();
 
   andThen(function() {
-    assert.equal(currentURL(), '/account');
+    assert.equal(
+      currentURL(),
+      '/account',
+      'We redirected to the newly made account page'
+    );
+
+    assert.equal(
+      flashPage.successMessages(),
+      1,
+      'Is showing a success flash message'
+    );
   });
 
 
