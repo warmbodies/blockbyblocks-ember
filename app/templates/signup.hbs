@@ -18,7 +18,11 @@
       {{bbb-password value="passwordConfirmation" model=model}}
     </div>
     <div class="mt4">
-      <a href="#" class="btn btn-primary" {{action "signup"}}>
+      <a
+        href="#"
+        class="btn btn-primary"
+        data-test-id="signupButton"
+        {{action "signup"}}>
         Signup
       </a>
     </div>
