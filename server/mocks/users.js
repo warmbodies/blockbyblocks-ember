@@ -19,7 +19,6 @@ module.exports = function(app) {
     // test1234 will always auth.. for tests
     const pass = _.get(req, 'body.user.password');
     const email = _.get(req, 'body.user.email');
-    console.log(pass);
     if(pass === 'test1234') {
       res.status(201).json({
         token: 'hotdog',

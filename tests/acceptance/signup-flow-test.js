@@ -3,20 +3,33 @@ import moduleForAcceptance from 'blockbyblocks-ember/tests/helpers/module-for-ac
 
 import signupPage from '../pages/signup';
 import flashPage from '../pages/flash';
-// import userFactory from '../factories/user';
-import FactoryGuy, { make, build } from 'ember-data-factory-guy';
+import FactoryGuy from 'ember-data-factory-guy';
 
 import { currentSession, authenticateSession, invalidateSession } from '../../tests/helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | signup flow');
 
 test('visiting /signup-flow', function(assert) {
+  invalidateSession(this.application);
   signupPage.visit();
 
   andThen(function() {
     assert.equal(currentURL(), '/signup');
   });
 
+});
+
+test('if yer signed in, sinput redirects to account', function(assert) {
+  authenticateSession(this.application);
+  signupPage.visit();
+
+  andThen(function() {
+    assert.equal(
+      currentURL(),
+      '/account',
+      'We redirect to the account page if we\'re already logged in'
+    );
+  });
 });
 
 test('creating new signup', function(assert) {
@@ -31,12 +44,6 @@ test('creating new signup', function(assert) {
   signupPage.submit();
 
   andThen(function() {
-    const test = session.get('isAuthenticated');
-    assert.equal(
-      currentURL(),
-      '/account',
-      'We redirected to the newly made account page'
-    );
 
     assert.equal(
       flashPage.successMessages(),
@@ -50,6 +57,11 @@ test('creating new signup', function(assert) {
       "We have signed in after creating user"
     );
 
+    assert.equal(
+      currentURL(),
+      '/account',
+      'We redirected to the newly made account page'
+    );
 
     // TODO: Would be nice to test if we signed in as the right user
   });

@@ -9,18 +9,17 @@ export default Ember.Controller.extend({
       const u = this.get('model.username');
       const p = this.get('model.password');
 
-      const success = (data) => {
+      const success = () => {
         flash.success(`Congratulations! You've created a new account!`);
         this.get('session').authenticate('authenticator:devise', u, p)
           .then(() => {
-            // this.transitionToRoute('account');
-            // automatic transition
+            this.transitionToRoute('account');
           }, () => {
             flash.success(`But... the account you just made won't login :(`);
           });
       };
 
-      const error = (error) => {
+      const error = () => {
         flash.danger(`There was a problem creating your new user!`);
       };
 
