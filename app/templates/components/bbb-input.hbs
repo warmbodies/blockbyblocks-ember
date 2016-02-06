@@ -1,6 +1,6 @@
-<label class="block">{{value}}</label>
+<label class="block">{{label}}</label>
 {{input
-  value=(get model value)
+  value=value
   class="field"
-  data-test-id=(concat "input__" value)
+  data-test-id=(concat "input__" label)
 }}

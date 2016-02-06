@@ -1,4 +1,6 @@
 /*jshint node:true*/
+const _ = require('lodash');
+
 module.exports = function(app) {
   var express = require('express');
   var usersRouter = express.Router();
@@ -11,6 +13,21 @@ module.exports = function(app) {
 
   usersRouter.post('/', function(req, res) {
     res.status(201).json(req.body);
+  });
+
+  usersRouter.post('/sign_in', function(req, res) {
+    // test1234 will always auth.. for tests
+    const pass = _.get(req, 'body.user.password');
+    const email = _.get(req, 'body.user.email');
+    console.log(pass);
+    if(pass === 'test1234') {
+      res.status(201).json({
+        token: 'hotdog',
+        email: email
+      });
+    } else {
+      res.status(401).end();
+    }
   });
 
   usersRouter.get('/:id', function(req, res) {
@@ -42,6 +59,11 @@ module.exports = function(app) {
   // After installing, you need to `use` the body-parser for
   // this mock uncommenting the following line:
   //
-  app.use('/api/users', require('body-parser').json());
-  app.use('/api/users', usersRouter);
+  app.use('/api/users',
+    require('body-parser').json(),
+    require('body-parser').urlencoded({
+      extended: true
+    }),
+    usersRouter
+  );
 };

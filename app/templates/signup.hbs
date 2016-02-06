@@ -6,16 +6,16 @@
       {{#link-to "login"}}Login{{/link-to}}
     </h1>
     <div class="mt2">
-      {{bbb-input value="username" model=model}}
+      {{bbb-input label="username" value=model.username model=model}}
     </div>
     <div class="mt2">
-      {{bbb-input value="email" model=model}}
+      {{bbb-input label="email" value=model.email model=model}}
     </div>
     <div class="mt2">
-      {{bbb-password value="password" model=model}}
+      {{bbb-password label="password" value=model.password model=model}}
     </div>
     <div class="mt2">
-      {{bbb-password value="passwordConfirmation" model=model}}
+      {{bbb-password label="passwordConfirmation" value=model.passwordConfirmation model=model}}
     </div>
     <div class="mt4">
       <a

@@ -31,8 +31,8 @@ test('creating new signup', function(assert) {
   signupPage.submit();
 
   andThen(function() {
+    pauseTest();
     const test = session.get('isAuthenticated');
-    debugger;
     assert.equal(
       currentURL(),
       '/account',
