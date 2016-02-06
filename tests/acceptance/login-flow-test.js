@@ -34,6 +34,7 @@ test('user can login', function(assert) {
   loginPage.visit();
   loginPage.email(userJson.email);
   loginPage.password(userJson.password);
+  loginPage.submit();
 
   andThen(function() {
     assert.equal(
