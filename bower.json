@@ -12,6 +12,7 @@
     "jquery-mockjax": "2.0.1"
   },
   "resolutions": {
-    "ember": "2.2.0"
+    "ember": "2.2.0",
+    "jquery": "1.11.3"
   }
 }
