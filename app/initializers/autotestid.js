@@ -5,6 +5,10 @@ export function initialize(/* application */) {
   Ember.TextField.reopen({
     attributeBindings: ['data-test-id']
   });
+
+  Ember.LinkComponent.reopen({
+    attributeBindings: ['data-test-id']
+  });
 }
 
 export default {
