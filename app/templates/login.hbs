@@ -6,13 +6,16 @@
       <span class="underline-blue">Login</span>
     </h1>
     <div class="mt2">
-      {{bbb-input value="username" model=model}}
+      {{bbb-input label="email" value=model.email model=model}}
     </div>
     <div class="mt2">
-      {{bbb-password value="password" model=model}}
+      {{bbb-password label="password" value=model.password model=model}}
     </div>
     <div class="mt4">
-      <a href="#" class="btn btn-primary" {{action "signup"}}>
+      <a href="#"
+         class="btn btn-primary"
+         data-test-id="loginButton"
+         {{action "signup"}}>
         Signup
       </a>
     </div>
