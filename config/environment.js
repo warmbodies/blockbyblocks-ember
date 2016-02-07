@@ -25,6 +25,17 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
+    ENV['API'] = {
+      namespace: 'api/v1',
+      host: 'http://localhost:3002'
+    }
+
+    ENV.contentSecurityPolicy = {
+      'default-src': "'self'",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' localhost:35729 0.0.0.0:35729",
+      'media-src': "'self'"
+    };
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
