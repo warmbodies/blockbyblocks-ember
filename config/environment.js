@@ -62,18 +62,10 @@ module.exports = function(environment) {
   ENV['ember-simple-auth'] = {
     routeAfterAuthentication: 'account',
     routeIfAlreadyAuthenticated: 'account',
-    authenticationRoute: 'b000pizza123',
-    serverTokenEndpoint: 'aaaa1234'
   }
 
   ENV['simple-auth-devise'] = {
-    authenticationRoute: 'pizza',
-    serverTokenEndpoint: '12345678'
-  }
-
-  ENV['ember-simple-auth-devise'] = {
-    authenticationRoute: 'pizza123',
-    serverTokenEndpoint: '1234'
+    serverTokenEndpoint: `${ENV.API.host}/${ENV.API.namespace}/login`
   }
 
 
