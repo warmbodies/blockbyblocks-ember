@@ -16,15 +16,22 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    API: {
+      namespace: 'api/v1'
     }
   };
 
-  ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'account',
-    routeIfAlreadyAuthenticated: 'account'
-  }
-
   if (environment === 'development') {
+    ENV.API.host = 'http://localhost:3002';
+
+    ENV.contentSecurityPolicy = {
+      'default-src': "'self'",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' localhost:35729 0.0.0.0:35729",
+      'media-src': "'self'"
+    };
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -51,6 +58,16 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'account',
+    routeIfAlreadyAuthenticated: 'account',
+  }
+
+  ENV['simple-auth-devise'] = {
+    serverTokenEndpoint: `${ENV.API.host}/${ENV.API.namespace}/login`
+  }
+
 
   return ENV;
 };

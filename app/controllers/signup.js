@@ -6,12 +6,12 @@ export default Ember.Controller.extend({
   actions: {
     signup() {
       const flash = this.get('flashMessages');
-      const u = this.get('model.username');
+      const e = this.get('model.email');
       const p = this.get('model.password');
 
       const success = () => {
         flash.success(`Congratulations! You've created a new account!`);
-        this.get('session').authenticate('authenticator:devise', u, p)
+        this.get('session').authenticate('authenticator:devise', e, p)
           .then(() => {
             this.transitionToRoute('account');
           }, () => {
